@@ -1,2 +1,0 @@
-ptvpso.HasilIterasi
-ptvpso.proses
