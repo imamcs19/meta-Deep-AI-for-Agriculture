@@ -1,0 +1,81 @@
+{% extends "extends/base.html" %}
+{% block title %}
+    <title>FGA Big Data Using Python</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Project 1
+
+{% block content %}
+
+<div class="row" onload="myfunction()">    
+    <div class="col-md-3"></div>
+    <div class="panel panel-info block4">
+        <div class="panel-heading"> Detail Hasil Prediksi
+            <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+        </div>
+        <div class="panel-wrapper collapse in" aria-expanded="true">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="table-responsive">
+                            <table class="table table-hover" data-height="10">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Data ke-</th>
+                                    <th scope="col">Nilai Aktual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for aktual in y_aktual %}
+                                        <tr>
+                                            <th scope="row" >{{ loop.index }}</th>
+                                            <td>{{'%0.2f'|format(aktual|float)}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="table-responsive">
+                            <table class="table table-hover" data-height="10">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Nilai Prediksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for prediksi in y_prediksi %}
+                                        <tr>
+                                            <td>{{'%0.2f'|format(prediksi|float)}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3" for="example-email"><h2>Nilai MAPE</h2></label>
+                                <div class="col-md-9">
+                                    <input value="{{mape}}" type="email" id="example-email" name="example-email" class="form-control" placeholder="Nilai MAPE" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive border tableFixHead" style="height:470px" id="hasilGrafik"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

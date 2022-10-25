@@ -1,0 +1,133 @@
+{% extends "extends/base.html" %}
+{% block title %}
+    <title>FGA Big Data Using Python</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Project 1
+
+{% block content %}
+
+<div class="row" onload="myfunction()">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="white-box">
+            <div class="row">
+                <h3 class="box-title m-b-0">Input Parameter</h3>
+                <p class="text-muted m-b-30 font-13"> Prediksi Harga Kebutuhan Pokok Menggunakan Algoritme <i>Extreme Learning Machine</i> </p>
+                <form class="form-horizontal" action="{{ url_for('bigdataApps') }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                    <div class="form-group">
+                        <label class="col-sm-12">Upload File Dataset <sub>.csv</sub></label>
+                        <div class="col-sm-12">
+                            <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                <input type="file" name="inputDataset"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Banyak Fitur</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" name="banyakFitur" id="banyak_fitur">
+                                <option selected>Pilih Banyak Fitur</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-12">Banyak <i>Hidden Neuron</i></label>
+                        <div class="col-sm-12">
+                            <select class="form-control" name="banyakHiddenNeuron" id="banyak_hidden_neuron">
+                                <option selected>Pilih Banyak <i>Hidden Neuron</i></option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="submit" class="btn btn-block btn-info btn-rounded">Proses</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+    <div class="panel panel-info block4">
+        <div class="panel-heading"> Detail Hasil Prediksi
+            <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+        </div>
+        <div class="panel-wrapper collapse in" aria-expanded="true">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="table-responsive">
+                            <table class="table table-hover" data-height="10">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Data ke-</th>
+                                    <th scope="col">Nilai Aktual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for aktual in y_aktual %}
+                                        <tr>
+                                            <th scope="row" >{{ loop.index }}</th>
+                                            <td>{{'%0.2f'|format(aktual|float)}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="table-responsive">
+                            <table class="table table-hover" data-height="10">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Nilai Prediksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for prediksi in y_prediksi %}
+                                        <tr>
+                                            <td>{{'%0.2f'|format(prediksi|float)}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-3" for="example-email"><h2>Nilai MAPE</h2></label>
+                                <div class="col-md-9">
+                                    <input value="{{mape}}" type="email" id="example-email" name="example-email" class="form-control" placeholder="Nilai MAPE" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive border tableFixHead" style="height:470px" id="hasilGrafik"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends "extends/base.html" %}
+{% block title %}
+    <title>FGA Big Data Using Python</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Project 1
+
+{% block content %}
+
+<div class="row" onload="myfunction()">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="white-box">
+            <div class="row">
+                <h3 class="box-title m-b-0">Compute Engine</h3>
+                <p class="text-muted m-b-30 font-13">Real-time twitter <i> political data</i> </p>
+
+                <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/twit/style.css') }}"/>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+            	<script type="text/javascript" src="{{ url_for('static',filename='js/stream.js') }}"></script>
+
+            </div>
+        </div>
+
+        <div class = "loading-view">
+		<div class = "heading-twit">
+			<h1 style = "font-size: 8vw; margin:0">POLITWITICAL</h1>
+			<p style = "font-size: 2vw; margin:0">Real-time political twitter data.</p>
+			<h2 style = "font-size: 2vw; margin:1vw">What are people tweeting about right now?</h2>
+		</div>
+		<h1 id = "fetching" style = "font-size:2.5vw">Fetching data...</h1>
+		<img src="http://gifimage.net/wp-content/uploads/2017/08/twitter-gif-9.gif">
+	</div>
+
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock content %}

@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Chess World</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link href="/static/catur_static/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+		<link href="/static/catur_static/css/chessboard.min.css" type="text/css" rel="stylesheet">
+		<link href="/static/catur_static/css/game.css" type="text/css" rel="stylesheet">
+	</head>
+
+	<body>
+		<div id="name-page">
+			<form class="form-group has-danger" id="name-form">
+			  <label class="form-control-label" for="name-input">Name</label>
+			  <input type="text" class="form-control" id="name-input">
+			  <div class="invalid-feedback" id="error-text">Name not valid</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			<div class="instructions">
+				<h3>
+					<span>Move:&nbsp;</span><span><small class="text-muted">WASD</small></span>
+				</h3>
+				<h3>
+					<span>Look:&nbsp;</span><span><small class="text-muted">&uarr;&larr;&darr;&rarr;</small></span>
+				</h3>
+				<h3>
+					<span>Sprint:&nbsp;</span><span><small class="text-muted">SHIFT</small></span>
+				</h3>
+				<h3>
+					<span>Jump:&nbsp;</span><span><small class="text-muted">SPACE</small></span>
+				</h3>
+			</div>
+		</div>
+		<div id="loading">
+			<div class="lds-dual-ring"></div>
+		</div>
+		<div class="header">
+			<p>Room: {{ room_key }} Name: <span id='name'></span></p>
+			<p>White: <span id='white'></span> Black: <span id='black'></span></p>
+		</div>
+		<div id="myBoard" class="chess-board"></div>
+		<div id="promotion-tip" style="display: none;">
+		  <button type="button" class="btn btn-secondary" style="font-size: 30px;">♕</button>
+			<button type="button" class="btn btn-secondary" style="font-size: 30px;">♖</button>
+			<button type="button" class="btn btn-secondary" style="font-size: 30px;">♗</button>
+			<button type="button" class="btn btn-secondary" style="font-size: 30px;">♘</button>
+		</div>
+		<p id="gameOver" class="game-over"></p>
+		<div class="chat">
+	     <ul class="messages"></ul>
+	     <input class="input-message" placeholder="Type here..." maxlength="420"/> <!-- nice -->
+		</div>
+
+		<script src="/static/catur_static/lib/jquery.min.js"></script>
+		<script src="/static/catur_static/lib/socket.io.js"></script>
+    <script src="/static/catur_static/lib/three.min.js"></script>
+		<script src="/static/catur_static/lib/inflate.min.js"></script>
+		<script src="/static/catur_static/lib/Detector.js"></script>
+		<script src="/static/catur_static/lib/stats.min.js"></script>
+		<script src="/static/catur_static/lib/GLTFLoader.js"></script>
+		<script src="/static/catur_static/lib/FBXLoader.js"></script>
+		<script src="/static/catur_static/lib/chess.js"></script>
+		<script src="/static/catur_static/lib/chessboard.min.js"></script>
+
+		<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <script type="x-shader/x-fragment" id="fragmentShaderDepth">
+			uniform sampler2D texture;
+			varying vec2 vUV;
+
+			vec4 pack_depth( const in float depth ) {
+				const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );
+				const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );
+				vec4 res = fract( depth * bit_shift );
+				res -= res.xxyz * bit_mask;
+				return res;
+			}
+
+			void main() {
+				vec4 pixel = texture2D( texture, vUV );
+				if ( pixel.a < 0.5 ) discard;
+				gl_FragData[ 0 ] = pack_depth( gl_FragCoord.z );
+			}
+		</script>
+
+		<script type="x-shader/x-vertex" id="vertexShaderDepth">
+			varying vec2 vUV;
+
+			void main() {
+				vUV = 0.75 * uv;
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+				gl_Position = projectionMatrix * mvPosition;
+			}
+		</script>
+
+		<script id="globals" src="/static/catur_static/globals.js" room-key="{{ room_key }}" world="{{ world }}" socket-url="{{ socket_url }}"></script>
+		<script src="/static/catur_static/scene.js"></script>
+		<script src="/static/catur_static/sounds.js"></script>
+		<script src="/static/catur_static/chessBoard.js"></script>
+		<script src="/static/catur_static/chat.js"></script>
+    <script src="/static/catur_static/game.js"></script>
+	</body>
+</html>

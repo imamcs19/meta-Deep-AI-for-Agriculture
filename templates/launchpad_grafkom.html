@@ -1,0 +1,56 @@
+{% extends "extends/base.html" %}
+{% block title %}
+    <title>Web Data App</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Launchpad Project 1
+
+{% block content %}
+
+  <!--<link rel="stylesheet" href="{{ url_for('static', filename = 'css/font-awesome.min.css') }}"> -->
+  <script src="{{ url_for('static', filename = 'js/launchpad.js') }}"></script>
+
+  <div id="canvas-holder">
+        </div>
+
+        <button type="button" onclick="launchpad.toggle()">Test</button>
+
+        <script>
+
+
+            launchpad.setData([
+                {
+                    icon:"http://images.apple.com/v/osx/c/images/better-apps/icon_photos_large_2x.png",
+                    link: "http://www.apple.com/osx/apps/#numbers",
+                    label: "Membuat Objek Titik"
+                },
+                {
+                    icon:"http://images.apple.com/v/mac/shared/built-in-apps/e/images/numbers_icon_large_2x.png",
+                    link: "http://www.apple.com/osx/apps/#numbers",
+                    label: "Membuat Objek Segitiga"
+                },
+                {
+                    icon:"http://images.apple.com/v/mac/shared/built-in-apps/e/images/numbers_icon_large_2x.png",
+                    link: "https://fortawesome.github.io/Font-Awesome/",
+                    label: "Membuat Objek Segiempat"
+                },
+                {
+                    icon:"http://images.apple.com/v/osx/c/images/better-apps/icon_photos_large_2x.png",
+                    link: "http://www.apple.com/osx/photos/",
+                    label: "Membuat Objek Lingkaran"
+                }
+            ]);
+
+
+
+        </script>
+
+{% endblock content %}

@@ -1,0 +1,217 @@
+{% extends "extends/base_no_frame.html" %}
+{% block title %}
+    <title>Web Data App</title>
+{% endblock title %}
+{{ self.title() }}
+    Home
+{{ self.title() }}
+<button onclick="window.location.href='/'" class="btn btn-outline btn-rounded btn-info">
+    <i class="ti-arrow-left m-l-5"></i>
+    <span>Back Home</span>
+</button> Project 1
+
+{{ self.title() }}
+    Launchpad Project 1
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
+        <div class="bg-info white-box m-b-0">
+            <ul class="expense-box">
+                <li><i class="ti-star text-white"></i>
+                    <div>
+                        <h1 class="text-white m-b-0">Pengmas</h1>
+                        <h4 class="text-white">Filkom UB 2022</h4>
+                    </div>
+                </li>
+            </ul>
+            <img src="{{ url_for('static', filename = 'img/spark-rev2.png') }}" class="img-responsive" alt="Responsive image">
+        </div>
+        <div class="white-box">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="m-b-0 font-medium">Smart App<sup>TM</sup></h2>
+                    <h5 class="text-muted m-t-0">Pelatihan Multi-Culture Farming dengan Cloud-AI + IoT API & Web App</h5><br>
+                </div>
+                <div class="col-xs-3">
+                    <div class="circle circle-md bg-info pull-right m-t-10"><i class="ti-star"></i></div>
+                </div>
+                <!--<button onclick="window.location.href='pengmas2022'" class="btn btn-block btn-outline btn-rounded btn-info">-->
+                <!--    <span>Learn more</span>-->
+                <!--    <i class="ti-arrow-right m-l-5"></i>-->
+                <!--</button>-->
+
+                <div class="btn-group btn-block">
+                    <button aria-expanded="false" data-toggle="dropdown"
+                        class="btn btn-block btn-outline btn-rounded btn-primary dropdown-toggle waves-effect waves-light"
+                        type="button">View Detail <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a class="simple-ajax-popup-center" href="pengmas2022">Smart Monitoring | Cuaca x IoT API</a></li>
+                        <li><a class="simple-ajax-popup-center" href="pengmas2022">Smart Irigasi | Estimasi Waktu Pengairan x Cloud-AI</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
+        <div class="bg-primary white-box m-b-0">
+            <ul class="expense-box">
+                <li><i class="ti-bar-chart text-white"></i>
+                    <div>
+                        <h1 class="text-white m-b-0">Pengmas</h1>
+                        <h4 class="text-white">Filkom UB 2022</h4>
+                    </div>
+                </li>
+            </ul>
+            <img src="{{ url_for('static', filename = 'img/spark-rev2.png') }}" class="img-responsive" alt="Responsive image">
+        </div>
+        <div class="white-box">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="m-b-0 font-medium">Video Log<sup>TM</sup></h2>
+                    <h5 class="text-muted m-t-0">Pelatihan Multi-Culture Farming dengan Cloud-AI + IoT API & Web App</h5><br>
+                </div>
+                <div class="col-xs-3">
+                    <div class="circle circle-md bg-primary pull-right m-t-10"><i class="ti-bar-chart"></i></div>
+                </div>
+                <div class="btn-group btn-block">
+                    <button aria-expanded="false" data-toggle="dropdown"
+                        class="btn btn-block btn-outline btn-rounded btn-primary dropdown-toggle waves-effect waves-light"
+                        type="button">View Detail <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+
+                        <!--<div class="col-sm-3">-->
+                        <!--    <h3 class="box-title m-b-0">Popup with Youtube Video</h3>-->
+                        <!--    <small>You can use youtube video with popup just add class <code>popup-youtube</code></small>-->
+                        <!--    <br>-->
+                        <!--    <br> <a class="popup-youtube btn btn-danger" href="www.youtube.com/watch?v=Bp49uOYMNrk">Open YouTube video</a>-->
+                        <!--    <br>-->
+                        <!--</div>-->
+
+                        <li><a class="popup-youtube btn btn-danger" href="www.youtube.com/watch?v=Bp49uOYMNrk">Video Pengmas | Edukasi ke-1</a></li>
+                        <li><a class="popup-youtube btn btn-info" href="pengmas2022_vidEdu2">Video Pengmas | Edukasi ke-2</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
+        <div class="bg-info white-box m-b-0">
+            <ul class="expense-box">
+                <li><i class="ti-star text-white"></i>
+                    <div>
+                        <h1 class="text-white m-b-0">Pengmas</h1>
+                        <h4 class="text-white">Filkom UB 2022</h4>
+                    </div>
+                </li>
+            </ul>
+            <img src="{{ url_for('static', filename = 'img/spark-rev2.png') }}" class="img-responsive" alt="Responsive image">
+        </div>
+        <div class="white-box">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="m-b-0 font-medium">Mitra<sup>TM</sup></h2>
+                    <h5 class="text-muted m-t-0">Pelatihan Multi-Culture Farming dengan Cloud-AI + IoT API & Web App</h5><br>
+                </div>
+                <div class="col-xs-3">
+                    <div class="circle circle-md bg-info pull-right m-t-10"><i class="ti-star"></i></div>
+                </div>
+                <div class="btn-group btn-block">
+                    <button aria-expanded="false" data-toggle="dropdown"
+                        class="btn btn-block btn-outline btn-rounded btn-primary dropdown-toggle waves-effect waves-light"
+                        type="button">View Detail <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <!--<a class="popup-gmaps btn btn-info" href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&amp;hl=en&amp;t=v&amp;hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom">Open Google Map</a>-->
+                        <!--<li><a class="popup-gmaps btn btn-info" href="https://www.google.com/maps/@-7.983,112.6290805,3a,75y,353.15h,80.37t/data=!3m6!1e1!3m4!1sDEKAEn8m14BgSWYbs2Hqtg!2e0!7i16384!8i8192">Peta Pengmas | Mitra ke-1</a></li>-->
+                        <li><a class="popup-gmaps btn btn-info" href="https://maps.google.com/maps?q=Kauman,+Klojen,+Malang+City,+East+Java">Peta Pengmas | Mitra ke-1</a></li>
+                        <li><a class="popup-gmaps btn" href="https://maps.google.com/maps?q=Dawuhan,+Poncokusumo,+Malang+Regency,+East+Java">Peta Pengmas | Mitra ke-2</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3 col-sm-6 col-xs-12">
+        <div class="bg-primary white-box m-b-0">
+            <ul class="expense-box">
+                <li><i class="ti-server text-white"></i>
+                    <div>
+                        <h1 class="text-white m-b-0">Pengmas</h1>
+                        <h4 class="text-white">Filkom UB 2022</h4>
+                    </div>
+                </li>
+            </ul>
+            <img src="{{ url_for('static', filename = 'img/spark-rev2.png') }}" class="img-responsive" alt="Responsive image">
+        </div>
+        <div class="white-box">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h2 class="m-b-0 font-medium">Profile Tim<sup>&reg;</sup></h2>
+                    <h5 class="text-muted m-t-0">Pelatihan Multi-Culture Farming dengan Cloud-AI + IoT API & Web App</h5><br>
+                </div>
+                <div class="col-xs-3">
+                    <div class="circle circle-md bg-primary pull-right m-t-10"><i class="ti-server"></i></div>
+                </div>
+                <div class="btn-group btn-block">
+                    <button aria-expanded="false" data-toggle="dropdown"
+                        class="btn btn-block btn-outline btn-rounded btn-primary dropdown-toggle waves-effect waves-light"
+                        type="button">View Detail <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a class="simple-ajax-popup-center" href="pengmas2022_ppt1">Tentang PengMas</a></li>
+                        <li><a class="popup-with-form btn btn-success" href="#test-form">Tim Dosen Filkom UB</a></li>
+
+                        <form id="test-form" class="white-popup-block mfp-hide">
+                            <h1>Tim Dosen & Poster PengMas 2022</h1>
+                            <fieldset style="border:0;">
+                                <!--<p>Lightbox has an option to automatically focus on the first input. It's strongly recommended to use <code>inline</code> popup type for lightboxes with form instead of <code>ajax</code> (to keep entered data if the user accidentally refreshed the page).</p>-->
+                                <!--<div class="form-group">-->
+                                <!--    <label class="control-label" for="inputName">Name</label>-->
+                                <!--    <input type="text" class="form-control" id="inputName" name="name" placeholder="Name" required=""> </div>-->
+                                <!--<div class="form-group">-->
+                                <!--    <label class="control-label" for="inputEmail">Email</label>-->
+                                <!--    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="example@domain.com" required=""> </div>-->
+                                <!--<div class="form-group">-->
+                                <!--    <label class="control-label" for="inputPhone">Phone</label>-->
+                                <!--    <input type="tel" class="form-control" id="inputPhone" name="phone" placeholder="Eg. +447500000000" required=""> </div>-->
+                                <!--<div class="form-group">-->
+                                <!--    <label class="control-label" for="textarea">Textarea</label>-->
+                                <!--    <br>-->
+                                <!--    <textarea class="form-control" id="textarea" style="width: 649px; height: 99px;">Try to resize me to see how popup CSS-based resizing works.</textarea>-->
+                                <!--</div>-->
+
+                                <div class="row">
+                                    <!-- .col -->
+                                    <div class="col-sm-12">
+                                        <div class="white-box">
+                                            <!--<h3 class="box-title m-b-0">Tim Dosen & Poster PengMas 2022</h3>-->
+                                            <label class="control-label">Tim Dosen & Poster PengMas 2022</label>
+                                            <div id="image-popups" class="row">
+                                                <div class="col-sm-2">
+                                                    <a href="{{ url_for('static', filename = 'img/TimDosen.png') }}" data-effect="mfp-zoom-in"><img src="{{ url_for('static', filename = 'img/TimDosen.png') }}" class="img-responsive">
+                                                        <br>Tim</a>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <a href="{{ url_for('static', filename = 'img/Desain_Banner-PengMas_2022_v2.0.png') }}" data-effect="mfp-newspaper"><img src="{{ url_for('static', filename = 'img/Desain_Banner-PengMas_2022_v2.0.png') }}" class="img-responsive">
+                                                        <br>Poster</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- .col -->
+                                </div>
+
+                            </fieldset>
+                        </form>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
